@@ -1,0 +1,10 @@
+{
+    "uid": "http://registry.pinf.org/jsinsight.org/github/plugin-libraries/",
+    "name": "plugin-libraries",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git://github.com/insight/plugin-libraries.git"
+        }
+    ]
+}
