@@ -3,7 +3,7 @@ jQuery Library
 
 This package contains the jQuery library as a [CommonJS](http://www.commonjs.org/) package.
 
-Homepage: http://jquery.com/
+Homepage: [http://jquery.com/](http://jquery.com/)
 
 Release: v1.4.4
 
@@ -40,7 +40,7 @@ module.js
 Documentation
 -------------
 
-See: http://docs.jquery.com/
+See: [http://docs.jquery.com/](http://docs.jquery.com/)
 
 
 License

@@ -3,9 +3,9 @@ JavaScript InfoVis Toolkit Library
 
 This package contains the JavaScript InfoVis Toolkit library as a [CommonJS](http://www.commonjs.org/) package.
 
-Homepage: http://thejit.org/
+Homepage: [http://thejit.org/](http://thejit.org/)
 
-Release: http://thejit.org/downloads/Jit-2.0.0b.zip
+Release: [http://thejit.org/downloads/Jit-2.0.0b.zip](http://thejit.org/downloads/Jit-2.0.0b.zip)
 
 
 Install
@@ -41,7 +41,7 @@ Notes
 -----
 
 For the library to correctly set the dimensions of the canvas area for the visualization the DOM must have rendered before
-the JIT methods are called. The canvas dimensions are based on the containing element dimensions which are not set until after
+the JIT methods are called. This is because the canvas dimensions are based on the containing element dimensions which are not available until after
 the DOM has rendered.
 
 It is thus recommended to use this library together with the [jQuery](http://github.com/insight/plugin-libraries/blob/master/packages/jquery/) library.
@@ -72,7 +72,7 @@ It is thus recommended to use this library together with the [jQuery](http://git
 Documentation
 -------------
 
-See: http://thejit.org/docs/
+See: [http://thejit.org/docs/](http://thejit.org/docs/)
 
 
 License
