@@ -40,22 +40,20 @@ module.js
 Notes
 -----
 
-For the library to correctly set the dimensions of the canvas area for the visualization the DOM must have rendered before
+For the library to correctly set the dimensions of the canvas area for the visualization the DOM must have rendered and styles must have been applied before
 the JIT methods are called. This is because the canvas dimensions are based on the containing element dimensions which are not available until after
 the DOM has rendered.
-
-It is thus recommended to use this library together with the [jQuery](http://github.com/insight/plugin-libraries/blob/master/packages/jquery/) library.
     
-    var JQUERY = require('jquery/jquery').jQuery;
+    var PLUGIN = require('insight-plugin-api/plugin');
     var JIT = require('js-infovis-toolkit/jit');
     
     exports.main = function() {
     
-        // "content" is the root HTML element (body) to put markup into
-        JQUERY("#content").html('<div id="infovis"></div>');
+        // Create a container for the BarChart
+        PLUGIN.getRootElement().innerHTML = '<div id="infovis"></div>';
     
         // wait for the DOM
-        JQUERY(function() {
+        PLUGIN.ready(function() {
         
             //init BarChart
             barChart = new JIT.BarChart({

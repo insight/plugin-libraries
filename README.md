@@ -15,6 +15,7 @@ Libraries
  * [jQuery](http://github.com/insight/plugin-libraries/blob/master/packages/jquery/)
  * [JavaScript InfoVis Toolkit](http://github.com/insight/plugin-libraries/blob/master/packages/js-infovis-toolkit/)
  * [domplate](http://github.com/insight/plugin-libraries/blob/master/packages/domplate/)
+ * [observable](http://github.com/insight/plugin-libraries/blob/master/packages/observable/)
 
 
 Support & Feedback
