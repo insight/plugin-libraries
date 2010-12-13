@@ -16,6 +16,7 @@ Libraries
  * [JavaScript InfoVis Toolkit](http://github.com/insight/plugin-libraries/blob/master/packages/js-infovis-toolkit/)
  * [domplate](http://github.com/insight/plugin-libraries/blob/master/packages/domplate/)
  * [observable](http://github.com/insight/plugin-libraries/blob/master/packages/observable/)
+ * [dojo](http://github.com/insight/plugin-libraries/blob/master/packages/dojo/)
 
 
 Support & Feedback
