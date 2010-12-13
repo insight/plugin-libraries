@@ -7,6 +7,16 @@ Homepage: [http://dojotoolkit.org/](http://dojotoolkit.org/)
 
 Release: [http://download.dojotoolkit.org/release-1.5.0/](http://download.dojotoolkit.org/release-1.5.0/)
 
+Requirements
+------------
+
+  * UNIX
+  * Command-line PHP
+  * wget & unzip
+
+These requirements are for the automatic dojo build wrapping script and can be relaxed if the script is patched accordingly.
+
+
 Install
 =======
 
@@ -27,20 +37,94 @@ package.json
 Use
 ===
 
+By default only the dojo base library is available. To include other dojo, dijit or dojox modules see below.
+
 module.js
 ---------
 
     // require library at top of module
-    require("dojo/dojo");
+    var DOJO = require("dojo/dojo");
 
     // use library within module
+    DOJO.init({
+        afterOnLoad: true,
+        parseOnLoad: false,
+        isDebug: false,
+        locale: "en-us"
+    });
+    // the "dojo" free variable is now available
     dojo.query("#content");
-    
+
 
 Documentation
 -------------
 
 See: [http://dojotoolkit.org/documentation](http://dojotoolkit.org/documentation)
+
+
+Adding Dojo Modules
+===================
+
+Additional dojo, dijit or dojox modules are added by using a custom build layer.
+
+Place the following into a file at _scripts/dojo.layers.profile.js_ in a plugin package.
+
+    dependencies = {
+        "layers": [
+            {
+                name: "../insight-plugin.js",
+                resourceName: "insight-plugin",
+                discard: false,
+                dependencies: [
+                    "dijit.form.Button"
+                ]
+            }
+        ]
+    }
+
+Add all modules you require to the _dependencies_ property. For more information about the dojo build system see
+[here](http://dojotoolkit.org/reference-guide/build/index.html#build-index).
+
+A PHP script is provided as part of this package to build the _layer_:
+
+    php scripts/build.php \<PATH_TO_PLUGIN_PACKAGE\>
+
+The script will download dojo and call the build system appropriately. You must have an environment variable called
+_PINF\_HOME_ set to _/pinf_ or some other directory. The dojo distribution will be saved to _PINF\_HOME/downloads/download.dojotoolkit.org/..._.
+
+**NOTE:** The build script currently only works on UNIX and the _wget_ and _unzip_ commands must be available.
+
+The build process generates files at _resources/dojo/insight-plugin/_ within the plugin package.
+
+To load the optimized modules file use the following in a plugin module:
+
+    var PLUGIN = require('insight-plugin-api/plugin');
+    PLUGIN.loadResourceScript("dojo/insight-plugin/insight-plugin.js", function() {
+        // setup dojo-based plugin
+    });
+
+Dojo contains a lot of files most of which are not needed in most cases. To avoid sending all these files to the client
+a configuration setting can be used in the plugin's _package.json_ file.
+
+    {
+        "implements": {
+            "cadorn.org/insight/@meta/plugin/0": {
+                "resources": {
+                    "paths": {
+                        "/": "include",
+                        "/dojo/": "lazy",
+                        "/dojo/insight-plugin/insight-plugin.js": "include",
+                        "/dojo/insight-plugin/insight-plugin.js.uncompressed.js": "exclude"
+                    }
+                }
+            }
+        }
+    }
+
+This will tell the plugin system to load all files in _/dojo/_ on demand except for the _/dojo/insight-plugin/insight-plugin.js_ file
+which will be bundled with the plugin.
+
+You can find an example plugin here: [https://github.com/firephp/ui-plugins/tree/master/packages/example-dojo/packages/page-top/](https://github.com/firephp/ui-plugins/tree/master/packages/example-dojo/packages/page-top/)
 
 
 License
