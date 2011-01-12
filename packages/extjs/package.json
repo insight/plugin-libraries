@@ -1,0 +1,11 @@
+{
+    "uid": "http://registry.pinf.org/jsinsight.org/github/plugin-libraries/packages/extjs/",
+    "name": "extjs",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git://github.com/insight/plugin-libraries.git",
+            "path": "packages/extjs"
+        }
+    ]
+}
