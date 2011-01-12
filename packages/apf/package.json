@@ -7,5 +7,12 @@
             "url": "git://github.com/insight/plugin-libraries.git",
             "path": "packages/apf"
         }
-    ]
+    ],
+    "mappings": {
+        "plugin": {
+            "catalog": "http://registry.pinf.org/jsinsight.org/github/catalog.json",
+            "name": "plugin-api",
+            "revision": "master"
+        }
+    }
 }
