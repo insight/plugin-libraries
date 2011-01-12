@@ -25,9 +25,28 @@ if(!$pluginBasePath || !file_exists($pluginBasePath)) {
     exit;
 }
 
+// ensure plugin declares dojo as dependency
+$pluginPackageDescriptorPath = $pluginBasePath . DIRECTORY_SEPARATOR . 'package.json';
+if(!file_exists($pluginPackageDescriptorPath)) {
+    echo 'No package descriptor found at: ' . $pluginPackageDescriptorPath . "\n";
+    exit;
+}
+$pluginPackageDescriptor = json_decode(file_get_contents($pluginPackageDescriptorPath), true);
+$found = false;
+foreach( $pluginPackageDescriptor['mappings'] as $alias => $info ) {
+    if(isset($info['catalog']) && $info['catalog']=='http://registry.pinf.org/jsinsight.org/github/plugin-libraries/packages/catalog.json' &&
+       isset($info['name']) && $info['name']=='dojo') {
+        $found = true;
+    }
+}
+if(!$found) {
+    echo 'Dojo not declared as dependency for plugin package.' . "\n";
+    exit;
+}
+
 $dojoUrl = 'http://download.dojotoolkit.org/release-1.5.0/dojo-release-1.5.0-src.zip';
 $dojoUrlInfo = parse_url($dojoUrl);
-$dojoArchivePath = $PINF_HOME . DIRECTORY_SEPARATOR . 'downloads' . DIRECTORY_SEPARATOR . $dojoUrlInfo['host'] . DIRECTORY_SEPARATOR . $dojoUrlInfo['path'];
+$dojoArchivePath = $PINF_HOME . DIRECTORY_SEPARATOR . 'downloads' . DIRECTORY_SEPARATOR . $dojoUrlInfo['host'] . $dojoUrlInfo['path'];
 $dojoHomePath = $dojoArchivePath . '~contents';
 
 if(!file_exists($dojoHomePath)) {
@@ -64,7 +83,7 @@ if(!file_exists($layerProfileFile)) {
     exit;
 }
 
-$command = 'cd ' . $dojoHomePath . '/util/buildscripts/ ; ./build.sh profileFile=' . $layerProfileFile . ' action=clean,release cssOptimize=comments releaseName=insight-plugin releaseDir=' . $pluginBasePath . '/resources/dojo' . "\n";
+$command = 'cd ' . $dojoHomePath . '/util/buildscripts/ ; ./build.sh profileFile=' . $layerProfileFile . ' action=clean,release cssOptimize=comments releaseName=insight-plugin releaseDir=' . $pluginBasePath . '/resources/dojo';
 echo 'Running: ' . $command . "\n";
 passthru($command);
 

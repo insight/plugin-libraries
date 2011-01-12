@@ -26,7 +26,7 @@ package.json
     {
         "mappings": {
             "dojo": {
-                "catalog": "http://registry.pinf.org/cadorn.org/github/catalog.json",
+                "catalog": "http://registry.pinf.org/jsinsight.org/github/plugin-libraries/packages/catalog.json",
                 "name": "dojo",
                 "revision": "master"
             }
@@ -87,7 +87,7 @@ Add all modules you require to the _dependencies_ property. For more information
 
 A PHP script is provided as part of this package to build the _layer_:
 
-    php scripts/build.php \<PATH_TO_PLUGIN_PACKAGE\>
+    php scripts/build.php <PATH_TO_PLUGIN_PACKAGE>
 
 The script will download dojo and call the build system appropriately. You must have an environment variable called
 _PINF\_HOME_ set to _/pinf_ or some other directory. The dojo distribution will be saved to _PINF\_HOME/downloads/download.dojotoolkit.org/..._.
