@@ -32,10 +32,21 @@ module.js
 ---------
 
     // require library at top of module
-    require('extjs/adapter/ext/ext-base');
-    require('extjs/ext-all');
+    var EXTJS = require("extjs/extjs");
 
     // use library within module
+    EXTJS.init();
+
+    Ext.getDom("content").innerHTML = '<div id="button"></div>';
+ 
+    var button = new Ext.Button({
+        text: "Click me!",
+        handler: function() {
+            CONSOLE.log("Button clicked!");
+        }
+    });
+    
+    button.render("button");
 
 
 Documentation
