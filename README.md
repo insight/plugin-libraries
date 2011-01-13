@@ -7,7 +7,7 @@ This project contains common libraries to be used with [Insight Plugins](https:/
 The sub-packages contain releases of third party libraries with minor modifications to make them loadable as [CommonJS](http://www.commonjs.org/)
 packages.
 
-Insight clients should make these libraries avaiable to plugins without the plugin needing to bundle them.
+Insight clients should make these libraries available to plugins without the plugin needing to bundle them where possible and applicable.
 
 Libraries
 ---------
@@ -17,6 +17,8 @@ Libraries
  * [domplate](http://github.com/insight/plugin-libraries/blob/master/packages/domplate/)
  * [observable](http://github.com/insight/plugin-libraries/blob/master/packages/observable/)
  * [dojo](http://github.com/insight/plugin-libraries/blob/master/packages/dojo/)
+ * [apf](http://github.com/insight/plugin-libraries/blob/master/packages/apf/)
+ * [extjs](http://github.com/insight/plugin-libraries/blob/master/packages/extjs/)
 
 
 Support & Feedback
