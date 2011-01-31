@@ -19,6 +19,7 @@ Libraries
  * [dojo](http://github.com/insight/plugin-libraries/blob/master/packages/dojo/)
  * [apf](http://github.com/insight/plugin-libraries/blob/master/packages/apf/)
  * [extjs](http://github.com/insight/plugin-libraries/blob/master/packages/extjs/)
+ * [ace](http://github.com/insight/plugin-libraries/blob/master/packages/ace/)
 
 
 Support & Feedback
