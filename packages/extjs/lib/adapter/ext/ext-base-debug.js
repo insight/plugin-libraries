@@ -1843,6 +1843,9 @@ Ext.lib.Ajax = function() {
         var httpStatus, responseObject;
 
         try {
+            if (o.conn.channel !== undefined && o.conn.channel.originalURI.scheme=="narwhalrunner-accessible") {
+		httpStatus = 200;
+            } else
             if (o.conn.status !== undefined && o.conn.status != 0) {
                 httpStatus = o.conn.status;
             }

@@ -12,9 +12,26 @@ exports.init = function(options) {
         "path": "css/ext-all.css"
     });
 
-    require('./adapter/ext/ext-base');
-    require('./ext-all');
+    // NOTE: This file is patched!
+    require('./adapter/ext/ext-base-debug');
+
+    require('./plugins/event-based-ajax');
+    require('./ext-all-debug');
+    require('./plugins/dom-observer');
 
 }
 
-
+exports.loadPlugins = function(names, callback) {
+    for( var i in names ) {
+        if(names[i]=="file-upload-field") {
+            PLUGIN.addCss({
+                "package": module["package"],
+                "path": "css/plugins/" + names[i] + ".css"
+            });
+        }
+        names[i] = "./plugins/" + names[i];
+    }
+    require(names, function() {
+        callback();
+    });
+}
